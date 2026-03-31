@@ -9,3 +9,5 @@ frontend/dist/
 *.zip
 .DS_Store
 Thumbs.db
+
+.idea/
