@@ -1,0 +1,1273 @@
+:root {
+  color-scheme: dark;
+  --bg: #08070a;
+  --bg-2: #110d12;
+  --panel: rgba(24, 18, 24, 0.88);
+  --panel-soft: rgba(29, 21, 28, 0.94);
+  --panel-strong: rgba(36, 27, 33, 0.98);
+  --panel-solid: #191419;
+  --text: #f7f1e9;
+  --muted: #cabaa8;
+  --muted-2: #a59382;
+  --line: rgba(255, 255, 255, 0.08);
+  --line-strong: rgba(255, 255, 255, 0.12);
+  --gold: #d6b06b;
+  --gold-2: #f3dfb8;
+  --gold-soft: rgba(214, 176, 107, 0.12);
+  --danger: #ff7777;
+  --success: #84d0ab;
+  --shadow: 0 30px 80px rgba(0, 0, 0, 0.36);
+  --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.28);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#app {
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  background:
+    radial-gradient(circle at top left, rgba(214, 176, 107, 0.15), transparent 24%),
+    radial-gradient(circle at 90% 10%, rgba(164, 102, 129, 0.14), transparent 28%),
+    radial-gradient(circle at 50% 120%, rgba(214, 176, 107, 0.08), transparent 26%),
+    linear-gradient(180deg, #08070a 0%, #0d0a10 42%, #0a090d 100%);
+  color: var(--text);
+  line-height: 1.5;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.18;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 34px 34px;
+  mask-image: radial-gradient(circle at center, black, transparent 80%);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+.container {
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+}
+
+.section {
+  padding: 56px 0;
+}
+
+.sectionTightTop {
+  padding-top: 10px;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  color: var(--gold-2);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.eyebrow::before {
+  content: '';
+  width: 28px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold));
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+h1 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(42px, 7vw, 78px);
+  line-height: 0.96;
+  letter-spacing: -0.03em;
+}
+
+h2 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(32px, 4vw, 52px);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+h3 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(24px, 3vw, 34px);
+  line-height: 1.05;
+}
+
+p {
+  color: var(--muted);
+}
+
+.btnPrimary,
+.btnSecondary,
+.btnGhost,
+.btnSmall,
+.btnDanger,
+.navButton,
+.btnGhostSmall {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 46px;
+  padding: 0 18px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  transition: transform 180ms ease, border-color 180ms ease, background 180ms ease, opacity 180ms ease;
+}
+
+.btnPrimary,
+.navButton {
+  background: linear-gradient(135deg, #caa05c, #f0d8aa 52%, #b78844);
+  color: #25170d;
+  box-shadow: 0 14px 35px rgba(214, 176, 107, 0.2);
+  font-weight: 700;
+}
+
+.btnSecondary {
+  border-color: rgba(214, 176, 107, 0.35);
+  background: rgba(214, 176, 107, 0.06);
+  color: var(--text);
+}
+
+.btnGhost,
+.btnGhostSmall,
+.btnSmall {
+  border-color: var(--line-strong);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text);
+}
+
+.btnDanger {
+  border-color: rgba(255, 119, 119, 0.25);
+  background: rgba(255, 119, 119, 0.08);
+  color: #ffd1d1;
+}
+
+.btnGhostSmall,
+.btnSmall {
+  min-height: 38px;
+  padding: 0 14px;
+}
+
+.btnPrimary:hover,
+.btnSecondary:hover,
+.btnGhost:hover,
+.btnSmall:hover,
+.btnDanger:hover,
+.navButton:hover,
+.brandChip:hover {
+  transform: translateY(-1px);
+}
+
+button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.siteHeader {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  backdrop-filter: blur(18px);
+  background: linear-gradient(180deg, rgba(8, 7, 10, 0.86), rgba(8, 7, 10, 0.52));
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.siteHeaderInner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  min-height: 82px;
+}
+
+.brandLockup {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brandMark {
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  border-radius: 15px;
+  background: linear-gradient(135deg, rgba(214, 176, 107, 0.9), rgba(243, 223, 184, 0.75));
+  color: #2e1d10;
+  font-weight: 800;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25), 0 12px 24px rgba(214, 176, 107, 0.16);
+}
+
+.brandLockup strong,
+.brandMini,
+.adminBrand,
+.adminSidebarBrand {
+  display: block;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 28px;
+  letter-spacing: 0.02em;
+}
+
+.brandLockup span,
+.adminSidebarTop p,
+.footerCopy,
+.footerLead,
+.brandLockup div span {
+  color: var(--muted-2);
+  font-size: 13px;
+}
+
+.siteNav {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.siteNav > a {
+  color: #f1e9de;
+  font-size: 15px;
+}
+
+.heroSection {
+  padding: 44px 0 30px;
+}
+
+.heroGrid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 28px;
+  align-items: stretch;
+}
+
+.heroContent,
+.heroVisualCard,
+.storyPanel,
+.spotlightShell,
+.shopHeroCard,
+.contactPanel,
+.contactIntro,
+.adminPanelSolid,
+.adminLoginCard,
+.modalCardLuxury,
+.statsRibbonCard,
+.productCard,
+.detailInfoCard,
+.contactInfoCard {
+  border: 1px solid var(--line);
+  background: linear-gradient(180deg, rgba(26, 19, 25, 0.92), rgba(20, 16, 22, 0.88));
+  box-shadow: var(--shadow-soft);
+}
+
+.heroContent {
+  padding: clamp(28px, 4vw, 46px);
+  border-radius: 34px;
+}
+
+.heroContent p {
+  margin-top: 20px;
+  max-width: 640px;
+  font-size: 18px;
+}
+
+.heroActions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 28px;
+}
+
+.heroStats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 30px;
+}
+
+.heroStats > div,
+.shopHeroMeta > div,
+.detailInfoCard,
+.contactInfoCard,
+.statsRibbonCard,
+.luxuryHighlightCard {
+  padding: 16px 18px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.heroStats span,
+.shopHeroMeta span,
+.detailInfoCard span,
+.contactInfoCard span,
+.statsRibbonCard span,
+.footerTitle {
+  display: block;
+  color: var(--muted-2);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.heroStats strong,
+.shopHeroMeta strong,
+.detailInfoCard strong,
+.contactInfoCard strong,
+.statsRibbonCard strong {
+  display: block;
+  margin-top: 6px;
+  font-size: 17px;
+  color: var(--text);
+}
+
+.heroVisualCard {
+  position: relative;
+  overflow: hidden;
+  border-radius: 34px;
+  padding: 24px;
+  min-height: 100%;
+}
+
+.heroBottleStage {
+  position: relative;
+  height: 420px;
+  border-radius: 28px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 25% 20%, rgba(243, 223, 184, 0.28), transparent 22%),
+    radial-gradient(circle at 70% 25%, rgba(201, 133, 159, 0.22), transparent 24%),
+    linear-gradient(180deg, rgba(45, 31, 39, 0.96), rgba(16, 12, 17, 0.98));
+}
+
+.heroVisualGlow,
+.spotlightOrb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(6px);
+}
+
+.heroVisualGlow {
+  inset: auto auto 30px 50%;
+  width: 220px;
+  height: 220px;
+  transform: translateX(-50%);
+  background: radial-gradient(circle, rgba(214, 176, 107, 0.32), transparent 68%);
+}
+
+.floatingBottle {
+  position: absolute;
+  bottom: 50px;
+  width: 96px;
+  border-radius: 30px 30px 18px 18px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.68), rgba(244, 223, 183, 0.24) 34%, rgba(162, 119, 60, 0.45) 100%),
+    linear-gradient(180deg, rgba(255,255,255,0.12), rgba(255,255,255,0));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.45),
+    inset -14px 0 20px rgba(255, 255, 255, 0.05),
+    0 26px 36px rgba(0, 0, 0, 0.28);
+}
+
+.floatingBottle::before {
+  content: '';
+  position: absolute;
+  top: -24px;
+  left: 50%;
+  width: 34px;
+  height: 30px;
+  transform: translateX(-50%);
+  border-radius: 12px 12px 4px 4px;
+  background: linear-gradient(180deg, #1d1a20, #3a3138);
+}
+
+.bottleOne {
+  left: 18%;
+  height: 220px;
+  transform: rotate(-8deg);
+}
+
+.bottleTwo {
+  left: 42%;
+  height: 260px;
+  width: 110px;
+}
+
+.bottleThree {
+  right: 15%;
+  height: 235px;
+  transform: rotate(9deg);
+}
+
+.heroEditorialPanel {
+  position: absolute;
+  left: 24px;
+  right: 24px;
+  bottom: 24px;
+  padding: 18px 20px;
+  border-radius: 22px;
+  background: rgba(8, 7, 10, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(16px);
+}
+
+.heroEditorialPanel p {
+  margin-top: 8px;
+}
+
+.statsRibbon {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.statsRibbonCard {
+  padding: 18px 20px;
+  border-radius: 22px;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 22px;
+}
+
+.sectionHeader p,
+.adminHeaderLead {
+  margin-top: 10px;
+  max-width: 760px;
+}
+
+.productGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.productCard {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 28px;
+  min-height: 100%;
+}
+
+.productCardImageWrap {
+  position: relative;
+  aspect-ratio: 0.88 / 1;
+  overflow: hidden;
+  background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+}
+
+.productCardImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 350ms ease;
+}
+
+.productCard:hover .productCardImage {
+  transform: scale(1.04);
+}
+
+.productOverlayBadges {
+  position: absolute;
+  inset: 16px 16px auto 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.productBadge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 30px;
+  padding: 0 12px;
+  border-radius: 999px;
+  background: rgba(8, 7, 10, 0.54);
+  backdrop-filter: blur(8px);
+  color: #fff4de;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 12px;
+}
+
+.softBadge {
+  background: rgba(214, 176, 107, 0.12);
+}
+
+.productImagePlaceholder,
+.tableThumb {
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(circle at top, rgba(214, 176, 107, 0.25), transparent 30%),
+    linear-gradient(180deg, rgba(39, 29, 36, 0.92), rgba(16, 12, 17, 0.98));
+  color: var(--gold-2);
+  font-family: 'Cormorant Garamond', Georgia, serif;
+}
+
+.productImagePlaceholder {
+  height: 100%;
+  font-size: 42px;
+}
+
+.productCardBody {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 18px 18px 20px;
+}
+
+.productCardTopline {
+  color: var(--gold-2);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.productCardBody h3 {
+  font-size: 30px;
+}
+
+.productCardBody p {
+  min-height: 48px;
+}
+
+.productCardFooter {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.productCardFooter strong {
+  color: var(--text);
+  font-size: 17px;
+}
+
+.productCardFooter span {
+  color: var(--gold-2);
+  font-size: 14px;
+}
+
+.storyGrid,
+.contactSplit {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.storyPanel,
+.contactIntro,
+.contactPanel,
+.shopHeroCard,
+.spotlightShell,
+.adminTableWrap,
+.adminLoginCard,
+.modalCardLuxury {
+  border-radius: 30px;
+}
+
+.storyPanel,
+.contactIntro,
+.contactPanel {
+  padding: 28px;
+}
+
+.glowPanel {
+  background:
+    radial-gradient(circle at top right, rgba(214, 176, 107, 0.18), transparent 30%),
+    linear-gradient(180deg, rgba(31, 22, 28, 0.96), rgba(20, 16, 22, 0.94));
+}
+
+.darkPanel {
+  background: linear-gradient(180deg, rgba(17, 13, 18, 0.98), rgba(9, 8, 11, 1));
+}
+
+.spotlightShell {
+  display: grid;
+  grid-template-columns: 1fr 0.9fr;
+  gap: 20px;
+  padding: 32px;
+  overflow: hidden;
+  position: relative;
+}
+
+.spotlightCopy {
+  max-width: 580px;
+}
+
+.spotlightCopy p {
+  margin: 14px 0 24px;
+}
+
+.spotlightVisual {
+  position: relative;
+  min-height: 260px;
+  border-radius: 28px;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(243, 223, 184, 0.22), transparent 26%),
+    radial-gradient(circle at 50% 60%, rgba(214, 176, 107, 0.15), transparent 32%),
+    linear-gradient(180deg, rgba(41, 28, 35, 0.9), rgba(16, 12, 17, 0.96));
+}
+
+.spotlightOrb {
+  width: 220px;
+  height: 220px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(243, 223, 184, 0.48), rgba(214, 176, 107, 0.12) 42%, transparent 68%);
+}
+
+.shopHeroCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 26px 28px;
+  margin-bottom: 18px;
+}
+
+.shopHeroCard p {
+  margin-top: 10px;
+  max-width: 700px;
+}
+
+.shopHeroMeta {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(120px, 1fr));
+  gap: 12px;
+}
+
+.shopControls {
+  display: grid;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.filters {
+  display: flex;
+  gap: 12px;
+}
+
+.filters input,
+.adminForm input,
+.adminForm textarea,
+.adminLoginCard input,
+.inquiryForm input,
+.inquiryForm textarea {
+  width: 100%;
+  min-height: 50px;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text);
+  padding: 14px 16px;
+  outline: none;
+  transition: border-color 180ms ease, box-shadow 180ms ease, background 180ms ease;
+}
+
+.filters input:focus,
+.adminForm input:focus,
+.adminForm textarea:focus,
+.adminLoginCard input:focus,
+.inquiryForm input:focus,
+.inquiryForm textarea:focus {
+  border-color: rgba(214, 176, 107, 0.42);
+  box-shadow: 0 0 0 4px rgba(214, 176, 107, 0.09);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.brandFilters {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.brandChip {
+  min-height: 38px;
+  padding: 0 14px;
+  border-radius: 999px;
+  border: 1px solid var(--line-strong);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text);
+}
+
+.brandChip.active {
+  background: rgba(214, 176, 107, 0.14);
+  border-color: rgba(214, 176, 107, 0.36);
+  color: var(--gold-2);
+}
+
+.emptyState {
+  padding: 40px 24px;
+  text-align: center;
+  border-radius: 24px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.productDetail {
+  display: grid;
+  grid-template-columns: 0.94fr 1.06fr;
+  gap: 24px;
+}
+
+.productDetailImageWrap,
+.productDetailBody {
+  border-radius: 30px;
+}
+
+.productDetailImageWrap {
+  overflow: hidden;
+  background: linear-gradient(180deg, rgba(33, 24, 30, 0.98), rgba(13, 10, 14, 1));
+  border: 1px solid var(--line);
+}
+
+.productDetailImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  min-height: 620px;
+}
+
+.largePlaceholder {
+  min-height: 620px;
+  font-size: 72px;
+}
+
+.productDetailBody {
+  padding: 32px;
+  border: 1px solid var(--line);
+  background: linear-gradient(180deg, rgba(27, 19, 25, 0.96), rgba(18, 14, 19, 0.96));
+}
+
+.productPrice {
+  margin-top: 14px;
+  font-size: 24px;
+  color: var(--gold-2);
+}
+
+.productDescription {
+  margin-top: 16px;
+  font-size: 16px;
+}
+
+.detailInfoGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin: 26px 0;
+}
+
+.contactPanel {
+  padding: 28px;
+}
+
+.panelLead {
+  margin: 10px 0 18px;
+}
+
+.inquiryForm {
+  display: grid;
+  gap: 18px;
+}
+
+.formGrid,
+.adminFormGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.formGrid label,
+.adminForm label,
+.adminLoginCard label {
+  display: grid;
+  gap: 8px;
+}
+
+.formGrid label span,
+.adminForm label span,
+.adminLoginCard label span {
+  color: #f4ecde;
+  font-size: 13px;
+}
+
+.fullSpan {
+  grid-column: 1 / -1;
+}
+
+.formActions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.leftAligned {
+  justify-content: flex-start;
+}
+
+.successText {
+  color: var(--success);
+}
+
+.errorText {
+  color: var(--danger);
+}
+
+.contactSplit {
+  align-items: start;
+}
+
+.contactInfoCard {
+  margin-top: 24px;
+}
+
+.siteFooter {
+  padding: 20px 0 42px;
+}
+
+.footerGrid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.7fr 0.9fr;
+  gap: 20px;
+  padding: 28px;
+  border-radius: 30px;
+  border: 1px solid var(--line);
+  background: linear-gradient(180deg, rgba(21, 17, 22, 0.92), rgba(12, 10, 14, 0.96));
+}
+
+.footerLead {
+  margin-top: 10px;
+  max-width: 460px;
+}
+
+.footerLinks {
+  display: grid;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.adminLoginWrap {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.adminLoginCard {
+  width: min(480px, 100%);
+  padding: 30px;
+}
+
+.adminShell {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 290px 1fr;
+}
+
+.adminSidebar {
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  border-right: 1px solid rgba(255, 255, 255, 0.06);
+  background: linear-gradient(180deg, rgba(14, 11, 16, 0.98), rgba(10, 9, 12, 1));
+}
+
+.adminSidebarTop,
+.adminNavGroup {
+  padding: 18px;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--line);
+}
+
+.adminNavGroup {
+  display: grid;
+  gap: 12px;
+}
+
+.adminNavGroup a {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 14px;
+  border-radius: 14px;
+  color: var(--text);
+}
+
+.adminNavGroup a.router-link-active {
+  background: rgba(214, 176, 107, 0.12);
+  color: var(--gold-2);
+}
+
+.adminMain {
+  padding: 28px;
+}
+
+.adminPage {
+  display: grid;
+  gap: 20px;
+}
+
+.adminPageHeader {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.adminTableWrap,
+.adminPanelSolid {
+  padding: 18px;
+  overflow: auto;
+  background: linear-gradient(180deg, rgba(24, 18, 24, 0.98), rgba(17, 14, 19, 1));
+}
+
+.adminTable {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 980px;
+}
+
+.adminTable th,
+.adminTable td {
+  padding: 14px 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  text-align: left;
+  vertical-align: top;
+}
+
+.adminTable th {
+  color: var(--gold-2);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.actionsCell {
+  white-space: nowrap;
+}
+
+.actionsCell > * + * {
+  margin-left: 8px;
+}
+
+.messageCell {
+  min-width: 260px;
+  color: var(--muted);
+}
+
+.tableThumb {
+  width: 62px;
+  height: 74px;
+  border-radius: 16px;
+  overflow: hidden;
+  font-size: 18px;
+}
+
+.tableThumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.modalBackdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: rgba(4, 4, 6, 0.72);
+  backdrop-filter: blur(12px);
+}
+
+.modalCard {
+  width: min(940px, 100%);
+  max-height: min(92vh, 980px);
+  overflow: auto;
+}
+
+.modalCardLuxury {
+  padding: 24px;
+  background: linear-gradient(180deg, rgba(24, 18, 24, 0.99), rgba(17, 13, 19, 1));
+}
+
+.modalHeader {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.iconButton {
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  border: 1px solid var(--line-strong);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text);
+}
+
+.toggleRow {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+
+.checkboxLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text);
+}
+
+.checkboxLabel input {
+  width: 18px;
+  height: 18px;
+}
+
+.imagePreviewPanel {
+  margin-top: 18px;
+  padding: 18px;
+  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.imagePreviewHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 14px;
+  color: var(--gold-2);
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.imagePreview {
+  width: 100%;
+  max-height: 340px;
+  border-radius: 22px;
+  object-fit: cover;
+}
+
+@media (max-width: 1100px) {
+  .heroGrid,
+  .productDetail,
+  .spotlightShell,
+  .storyGrid,
+  .contactSplit,
+  .footerGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .productGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .adminShell {
+    grid-template-columns: 1fr;
+  }
+
+  .adminSidebar {
+    border-right: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+}
+
+@media (max-width: 720px) {
+  .container {
+    width: min(100% - 24px, 1180px);
+  }
+
+  .siteHeaderInner,
+  .sectionHeader,
+  .shopHeroCard,
+  .adminPageHeader,
+  .filters,
+  .formActions,
+  .imagePreviewHeader {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .siteNav {
+    justify-content: flex-start;
+  }
+
+  .heroStats,
+  .statsRibbon,
+  .detailInfoGrid,
+  .formGrid,
+  .adminFormGrid,
+  .shopHeroMeta {
+    grid-template-columns: 1fr;
+  }
+
+  .productGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .heroBottleStage {
+    height: 320px;
+  }
+
+  .bottleOne,
+  .bottleThree {
+    width: 78px;
+    height: 180px;
+  }
+
+  .bottleTwo {
+    width: 92px;
+    height: 210px;
+  }
+
+  .productDetailBody,
+  .contactPanel,
+  .contactIntro,
+  .adminMain,
+  .adminSidebar,
+  .modalCardLuxury,
+  .heroContent,
+  .heroVisualCard {
+    padding: 20px;
+  }
+
+  .productDetailImage,
+  .largePlaceholder {
+    min-height: 380px;
+  }
+}
+
+/* --- luxury form visibility fix --- */
+.filters input,
+.adminForm input,
+.adminForm textarea,
+.adminLoginCard input,
+.inquiryForm input,
+.inquiryForm textarea {
+  border: 1px solid rgba(214, 176, 107, 0.42) !important;
+  background: rgba(20, 15, 18, 0.92) !important;
+  color: #fff7ea !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.03),
+    0 10px 24px rgba(0,0,0,0.16);
+  caret-color: #f3dfb8 !important;
+}
+
+.filters input::placeholder,
+.adminForm input::placeholder,
+.adminForm textarea::placeholder,
+.adminLoginCard input::placeholder,
+.inquiryForm input::placeholder,
+.inquiryForm textarea::placeholder {
+  color: rgba(243, 223, 184, 0.48) !important;
+}
+
+.filters input:focus,
+.adminForm input:focus,
+.adminForm textarea:focus,
+.adminLoginCard input:focus,
+.inquiryForm input:focus,
+.inquiryForm textarea:focus {
+  border-color: #d6b06b !important;
+  box-shadow:
+    0 0 0 4px rgba(214, 176, 107, 0.12),
+    0 14px 30px rgba(214, 176, 107, 0.08) !important;
+  background: rgba(24, 18, 22, 0.98) !important;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus {
+  -webkit-text-fill-color: #fff7ea !important;
+  box-shadow: 0 0 0 1000px rgba(20, 15, 18, 0.96) inset !important;
+  border: 1px solid rgba(214, 176, 107, 0.42) !important;
+  transition: background-color 9999s ease-in-out 0s;
+}
+
+.formGrid label span,
+.adminForm label span,
+.adminLoginCard label span {
+  color: #f3dfb8 !important;
+}
+
+.contactPanel,
+.contactIntro,
+.adminLoginCard,
+.modalCardLuxury,
+.adminPanelSolid,
+.adminTableWrap {
+  background: linear-gradient(180deg, rgba(22, 16, 20, 0.98), rgba(14, 11, 15, 0.98)) !important;
+}
+
+.inquiryForm textarea,
+.adminForm textarea {
+  min-height: 140px;
+}
